@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { login } from '../actions/auth'
 
-class SignUp extends React.Component {
+class SigningUp extends React.Component {
   constructor(props) {
     super(props)
 
@@ -66,4 +66,4 @@ const styles = {
 // backgroundRepeat: 'no-repeat',
 // backgroundPosition: 'bottom right'
 
-export default connect()(SignUp)
+export default connect()(SigningUp)
