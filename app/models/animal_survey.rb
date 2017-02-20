@@ -1,0 +1,2 @@
+class AnimalSurvey < ApplicationRecord
+end

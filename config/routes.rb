@@ -5,4 +5,7 @@ Rails.application.routes.draw do
     sessions: "api/sessions",
   }
   root 'home#index'
+
+  get '*unmatched_route', to: 'home#index'
+
 end

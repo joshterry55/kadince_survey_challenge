@@ -1,0 +1,2 @@
+class ColorSurvey < ApplicationRecord
+end

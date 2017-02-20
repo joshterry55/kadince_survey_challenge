@@ -1,0 +1,2 @@
+class ColorOption < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class HeaderColor < ApplicationRecord
+end

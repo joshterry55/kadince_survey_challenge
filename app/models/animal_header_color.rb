@@ -1,0 +1,2 @@
+class AnimalHeaderColor < ApplicationRecord
+end

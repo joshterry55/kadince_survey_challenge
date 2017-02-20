@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220193153) do
+ActiveRecord::Schema.define(version: 20170220203549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,4 +32,53 @@ ActiveRecord::Schema.define(version: 20170220193153) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "animal_header_colors", force: :cascade do |t|
+    t.string   "color",      default: "#CBE068"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  create_table "animal_options", force: :cascade do |t|
+    t.string   "animal_name"
+    t.integer  "animal_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["animal_type_id"], name: "index_animal_options_on_animal_type_id", using: :btree
+  end
+
+  create_table "animal_surveys", force: :cascade do |t|
+    t.string   "email"
+    t.string   "animal_type"
+    t.string   "favorite_animal"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "animal_types", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "color_options", force: :cascade do |t|
+    t.string   "color_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "color_surveys", force: :cascade do |t|
+    t.string   "email"
+    t.string   "color"
+    t.text     "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "header_colors", force: :cascade do |t|
+    t.string   "color",      default: "#59C4C7"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_foreign_key "animal_options", "animal_types"
 end

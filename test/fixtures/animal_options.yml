@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  animal_name: MyString
+  animal_type: one
+
+two:
+  animal_name: MyString
+  animal_type: two
