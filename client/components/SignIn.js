@@ -12,7 +12,7 @@ class SignIn extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     let { email, password } = this.refs
-    let user = { user: {
+    let admin = { admin: {
       email: email.value,
       password: password.value
     }}
@@ -21,7 +21,7 @@ class SignIn extends React.Component {
       url: '/admins/sign_in',
       type: 'POST',
       dataType: 'JSON',
-      data: user
+      data: admin
     }).done( user => {
       this.props.dispatch(login(user));
       this.props.history.push('/')

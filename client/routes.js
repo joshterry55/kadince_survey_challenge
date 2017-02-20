@@ -4,21 +4,25 @@ import { UserAuthWrapper } from 'redux-auth-wrapper';
 import App from './containers/App';
 import NoMatch from './components/NoMatch';
 import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
+import Admin from './components/Admin'
 
-const AdminAccess = UserAuthWrapper({
-  authSelector: state => state.admin,
-  predicate: admin => { return admin === 'Admin'},
-  redirectAction: () => browserHistory.push('/'),
-  wrapperDisplayName: 'UserIsAdmin'
+const AuthenticatedAccess = UserAuthWrapper({
+  authSelector: state => state.user,
+  predicate: user => { return user.id },
+  FailureComponent: () => <SignIn />,
+  wrapperDisplayName: 'UserIsLoggedIn'
 })
 
-const AdminRoutes = AdminAccess( (props) => props.children )
+const AuthWrapper = AuthenticatedAccess( (props) => props.children )
 
 export default (
   <Route>
     <Route path="/" component={App}>
       <Route path='/signin' component={SignIn} />
-      <Route component={AdminRoutes}>
+      <Route path='/signup' component={SignUp} />
+      <Route component={AuthWrapper}>
+        <Route path='/admin' component={Admin} />
       </Route>
       <Route path="*" status={404} component={NoMatch}/>
     </Route>

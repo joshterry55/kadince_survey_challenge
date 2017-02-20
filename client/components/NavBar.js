@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
-// import { logout, login } from '../actions/auth';
+import { logout, login } from '../actions/auth';
 
 
 
@@ -9,20 +9,23 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.navs = this.navs.bind(this)
+    this.logout = this.logout.bind(this)
+  }
+
+  logout(e) {
+    e.preventDefault()
+    browserHistory.push('/signin')
+    this.props.dispatch(logout(this.props.history))
   }
 
   navs() {
-    if(this.props.user.length) {
-      debugger
+    if(this.props.user.email) {
       return(
         <div>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/'>Announcements</Link></li>
-          <li><Link to='/'>Leaderboard</Link></li>
-          <li><Link to='/'>Training</Link></li>
-          <li><Link to='/'>Reports</Link></li>
-          <li><Link to='/'>Admin</Link></li>
-          <li><a style={{ cursor: 'pointer'}}>Logout</a></li>
+          <li><Link to='/colors'>Colors</Link></li>
+          <li><Link to='/'>Animals</Link></li>
+          <li><Link to='/admin'>Admin</Link></li>
+          <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
       )
     } else {
@@ -30,7 +33,8 @@ class NavBar extends React.Component {
         <div>
           <li><Link to='/'>Colors</Link></li>
           <li><Link to='/'>Animals</Link></li>
-          <li><Link to='/signin'>Signin</Link></li>
+          <li><Link to='/signin'>Sign In</Link></li>
+          <li><Link to='/signup'>Sign Up</Link></li>
         </div>
       )
     }
@@ -39,7 +43,7 @@ class NavBar extends React.Component {
   render() {
     return(
       <div>
-        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: '#60b9e8'}}>
+        <nav id='top-nav' style={{zIndex: '999', position: 'relative', backgroundColor: 'black'}}>
           <div className='nav-wrapper'>
             <Link to='/' className='brand-logo'><span style={{marginLeft: '14px', marginTop: '12px'}} className="nav-logo"></span><span className="logo-text"></span></Link>
             <a href='#' data-activates='mobile' className='button-collapse'>
