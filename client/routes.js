@@ -4,7 +4,7 @@ import { UserAuthWrapper } from 'redux-auth-wrapper';
 import App from './containers/App';
 import NoMatch from './components/NoMatch';
 import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import SigningUp from './components/SigningUp'
 import Admin from './components/Admin'
 
 const AuthenticatedAccess = UserAuthWrapper({
@@ -20,7 +20,7 @@ export default (
   <Route>
     <Route path="/" component={App}>
       <Route path='/signin' component={SignIn} />
-      <Route path='/signup' component={SignUp} />
+      <Route path='/signup' component={SigningUp} />
       <Route component={AuthWrapper}>
         <Route path='/admin' component={Admin} />
       </Route>
