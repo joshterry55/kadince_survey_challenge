@@ -82,10 +82,11 @@ class AnimalFormInfo extends React.Component {
       url: '/api/animal_surveys',
       type: 'POST',
       dataType: 'JSON',
-      data: { animal_survey: {
-        email: email,
+      data: {
+        animal_survey:
+        { email: email },
         favorite_animal: animalChoice,
-      }}
+      }
     }).done( data => {
       this.toggleSubmitted()
     }).fail( data => {
