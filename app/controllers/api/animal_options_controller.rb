@@ -1,4 +1,6 @@
 class Api::AnimalOptionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @animal_options = AnimalOption.all
     render json: @animal_options

@@ -1,4 +1,6 @@
 class Api::AnimalTypesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @animal_types = AnimalType.all
     render json: @animal_types

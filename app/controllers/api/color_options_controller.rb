@@ -1,4 +1,6 @@
 class Api::ColorOptionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @color_options = ColorOption.all
     render json: @color_options

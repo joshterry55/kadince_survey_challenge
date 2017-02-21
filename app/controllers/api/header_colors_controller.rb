@@ -1,4 +1,6 @@
 class Api::HeaderColorsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @colors = HeaderColor.all
     render json: @colors
