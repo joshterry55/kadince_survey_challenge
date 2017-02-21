@@ -7,7 +7,7 @@ class AnimalOptions extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className='col s12'>
         AnimalOptions Page
       </div>
     )

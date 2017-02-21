@@ -33,6 +33,6 @@ class Api::AnimalTypesController < ApplicationController
   private
 
   def animal_type_params
-    params.require(:animal_type).permit(:type)
+    params.require(:animal_type).permit(:type, :animal_type)
   end
 end

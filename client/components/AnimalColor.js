@@ -58,7 +58,8 @@ class AnimalColor  extends React.Component {
       return(
         <div>
           <form onSubmit={(e) => this.changeColor(e, id)}>
-            <input ref='newColor' defaultValue={animalColor} type='color' />
+            <input ref='newColor' style={{marginBottom: '10px'}} defaultValue={animalColor} type='color' />
+            <br />
             <input type='submit' />
           </form>
           <div><span style={{cursor: 'pointer'}} onClick={this.toggleEdit}>Cancel</span></div>
