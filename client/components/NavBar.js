@@ -23,7 +23,7 @@ class NavBar extends React.Component {
       return(
         <div>
           <li><Link to='/colorform'>Colors</Link></li>
-          <li><Link to='/'>Animals</Link></li>
+          <li><Link to='/animalform'>Animals</Link></li>
           <li><Link to='/admin'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
         </div>
@@ -32,7 +32,7 @@ class NavBar extends React.Component {
       return(
         <div>
           <li><Link to='/colorform'>Colors</Link></li>
-          <li><Link to='/'>Animals</Link></li>
+          <li><Link to='/animalform'>Animals</Link></li>
           <li><Link to='/signin'>Sign In</Link></li>
           <li><Link to='/signup'>Sign Up</Link></li>
         </div>

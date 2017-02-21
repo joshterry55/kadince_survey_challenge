@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class AnimalSettings extends React.Component {
+class ColorForm extends React.Component {
   constructor(props) {
     super(props)
 
@@ -147,4 +147,4 @@ const mapStateToProps = (state) => {
   return { user, colorcolor, coloroptions }
 }
 
-export default connect(mapStateToProps)(AnimalSettings)
+export default connect(mapStateToProps)(ColorForm)

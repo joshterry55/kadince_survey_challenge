@@ -7,6 +7,7 @@ import SignIn from './components/SignIn'
 import SigningUp from './components/SigningUp'
 import Admin from './components/Admin'
 import ColorForm from './components/ColorForm'
+import AnimalForm from './components/AnimalForm'
 
 const AuthenticatedAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -23,6 +24,7 @@ export default (
       <Route path='/signin' component={SignIn} />
       <Route path='/signup' component={SigningUp} />
       <Route path='/colorform' component={ColorForm} />
+      <Route path='/animalform' component={AnimalForm} />
       <Route component={AuthWrapper}>
         <Route path='/admin' component={Admin} />
       </Route>

@@ -9,6 +9,9 @@ import currenttype from './currenttype.js'
 import currentoption from './currentoption.js'
 import currentcoloroption from './currentcoloroption.js'
 import coloroptions from './coloroptions.js'
+import currentanimalcolor from './currentanimalcolor.js'
+import animalformtypes from './animalformtypes.js'
+import animalformoptions from './animalformoptions.js'
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -20,7 +23,10 @@ const rootReducer = combineReducers({
   currentoption,
   colorcolor,
   coloroptions,
-  currentcoloroption
+  currentcoloroption,
+  currentanimalcolor,
+  animalformtypes,
+  animalformoptions
 });
 
 export default rootReducer;
