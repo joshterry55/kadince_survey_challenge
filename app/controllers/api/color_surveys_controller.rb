@@ -10,7 +10,7 @@ class Api::ColorSurveysController < ApplicationController
 
   def create
     @color_survey = ColorSurvey.new(color_survey_params)
-    if @color_suvey.save
+    if @color_survey.save
       render json: @color_survey
     end
   end

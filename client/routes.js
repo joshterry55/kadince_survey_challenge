@@ -6,6 +6,7 @@ import NoMatch from './components/NoMatch';
 import SignIn from './components/SignIn'
 import SigningUp from './components/SigningUp'
 import Admin from './components/Admin'
+import ColorForm from './components/ColorForm'
 
 const AuthenticatedAccess = UserAuthWrapper({
   authSelector: state => state.user,
@@ -21,6 +22,7 @@ export default (
     <Route path="/" component={App}>
       <Route path='/signin' component={SignIn} />
       <Route path='/signup' component={SigningUp} />
+      <Route path='/colorform' component={ColorForm} />
       <Route component={AuthWrapper}>
         <Route path='/admin' component={Admin} />
       </Route>

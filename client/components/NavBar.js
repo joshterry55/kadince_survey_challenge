@@ -22,7 +22,7 @@ class NavBar extends React.Component {
     if(this.props.user.email) {
       return(
         <div>
-          <li><Link to='/colors'>Colors</Link></li>
+          <li><Link to='/colorform'>Colors</Link></li>
           <li><Link to='/'>Animals</Link></li>
           <li><Link to='/admin'>Admin</Link></li>
           <li><a style={{ cursor: 'pointer'}} onClick={this.logout}>Logout</a></li>
@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     } else {
       return(
         <div>
-          <li><Link to='/'>Colors</Link></li>
+          <li><Link to='/colorform'>Colors</Link></li>
           <li><Link to='/'>Animals</Link></li>
           <li><Link to='/signin'>Sign In</Link></li>
           <li><Link to='/signup'>Sign Up</Link></li>
