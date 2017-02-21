@@ -38,22 +38,6 @@ class AnimalTypes  extends React.Component {
     this.setState({add: !this.state.add})
   }
 
-  // changeColor(e, id) {
-  //   e.preventDefault()
-  //   let color = this.refs.newColor.value
-  //   $.ajax({
-  //     url: `/api/animal_header_colors/${id}`,
-  //     type: 'PUT',
-  //     dataType: 'JSON',
-  //     data: { animal_header_color: { color: color }}
-  //   }).done( color => {
-  //     this.toggleEdit()
-  //     this.props.dispatch({type: 'ANIMAL_COLOR', color})
-  //   }).fail( data => {
-  //     debugger
-  //   })
-  // }
-
   animalTypesList() {
     let currentType = this.props.currenttype
     if(this.props.animaltypes.length) {

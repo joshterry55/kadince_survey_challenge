@@ -1,6 +1,7 @@
 class Api::AnimalOptionsController < ApplicationController
   def index
     @animal_options = AnimalOption.all
+    render json: @animal_options
   end
 
   def show
