@@ -68,7 +68,7 @@ class AnimalColor  extends React.Component {
     } else {
       return(
         <div className='center'>
-          <p>Current Heading Color:</p>
+          <p style={{fontSize: '25px'}}>Current Heading Color:</p>
           <div style={{height: '50px', width: '50px', backgroundColor: `${color}`, margin: '0 auto'}}></div>
           <div>
             <span onClick={this.toggleEdit} style={{cursor: 'pointer'}}>Edit</span>
@@ -81,7 +81,7 @@ class AnimalColor  extends React.Component {
 
   render() {
     return(
-      <div>
+      <div style={{marginBottom: '20px'}}>
         {this.currentColor()}
       </div>
     )

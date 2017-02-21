@@ -158,8 +158,8 @@ class ColorOptions  extends React.Component {
       )
     } else {
       return(
-        <div className="center">
-          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: 'black'}}>+ Add Color</span>
+        <div className="center" style={{paddingBottom: '15px'}}>
+          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#999'}}>+ Add Color</span>
         </div>
       )
     }
@@ -169,7 +169,7 @@ class ColorOptions  extends React.Component {
   render() {
     return(
       <div className='center col s12'>
-        <span>Color Options:</span>
+        <span style={{fontSize: '25px'}}>Color Options:</span>
         {this.addDisplay()}
         {this.colorOptionsList()}
       </div>

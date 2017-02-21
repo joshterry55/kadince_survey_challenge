@@ -34,11 +34,12 @@ class NavBar extends React.Component {
           <li><Link to='/colorform'>Colors</Link></li>
           <li><Link to='/animalform'>Animals</Link></li>
           <li><Link to='/signin'>Sign In</Link></li>
-          <li><Link to='/signup'>Sign Up</Link></li>
         </div>
       )
     }
   }
+  // <li><Link to='/signup'>Sign Up</Link></li>
+
 
   render() {
     return(

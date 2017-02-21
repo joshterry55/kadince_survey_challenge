@@ -153,8 +153,8 @@ class AnimalTypes  extends React.Component {
       )
     } else {
       return(
-        <div className="center">
-          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: 'black'}}>+ Add Animal Type</span>
+        <div className="center" style={{paddingBottom: '15px'}}>
+          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: '#999'}}>+ Add Animal Type</span>
         </div>
       )
     }
@@ -163,8 +163,8 @@ class AnimalTypes  extends React.Component {
 
   render() {
     return(
-      <div className='center col s12'>
-        <span>Animal Types:</span>
+      <div className='center col s12' style={{marginBottom: '20px'}}>
+        <span style={{fontSize: '25px'}}>Animal Types:</span>
         {this.addDisplay()}
         {this.animalTypesList()}
       </div>

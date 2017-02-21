@@ -24,7 +24,7 @@ class SignIn extends React.Component {
       data: admin
     }).done( user => {
       this.props.dispatch(login(user));
-      this.props.history.push('/')
+      this.props.history.push('/admin')
     }).fail( err => {
       debugger
     })
@@ -36,18 +36,6 @@ class SignIn extends React.Component {
         <div className='col s12' style={{paddingTop: '65px'}}>
 
           <div className='col s12 m6 offset-m3 l4 offset-l4' style={{backgroundColor: 'rgba(200,200,200,0.65)', padding: '20px', borderRadius: '5px'}}>
-            <div className='center' style={{position: 'relative', height: '105px'}}>
-              <div style={{
-                  height: '100px',
-                  width: '100px',
-                  borderRadius: '50%',
-                  display: 'inline-block',
-                  boxShadow: '0 0 2px rgba(0,0,0,0.35)',
-                  border: '1px solid #000',
-                  backgroundImage: `url('http://res.cloudinary.com/dk2bj79p0/image/upload/v1483585049/anonBee_wgbcih.jpg')`,
-                  backgroundSize: 'cover'
-                }}></div>
-            </div>
             <form className='col s12' onSubmit={this.handleSubmit}>
               <label style={{color: 'black'}}>Email</label>
               <input type="email" style={{color: 'black', backgroundColor: '#f2f7f7', borderRadius: '2px'}} required={true} ref='email' placeholder='email' />

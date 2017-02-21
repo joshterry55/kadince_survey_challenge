@@ -13,9 +13,9 @@ class Admin extends React.Component {
     return(
       <div className='row'>
         <div className='col s12 m10 offset-m1 center'>
-          <h2>Animal Survey Settings</h2>
+          <h3>Animal Survey Settings</h3>
           <AnimalSettings />
-          <h2>Color Survey Settings</h2>
+          <h3>Color Survey Settings</h3>
           <ColorSettings />
         </div>
       </div>
