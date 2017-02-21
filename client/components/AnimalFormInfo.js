@@ -9,10 +9,12 @@ class AnimalFormInfo extends React.Component {
     this.state = {animalOptions: []}
 
     this.animalTypeOptions = this.animalTypeOptions.bind(this)
-    this.submitColorForm = this.submitColorForm.bind(this)
+    this.submitAnimalForm = this.submitAnimalForm.bind(this)
     this.toggleSubmitted = this.toggleSubmitted.bind(this)
     this.animalOptions = this.animalOptions.bind(this)
     this.showOptions = this.showOptions.bind(this)
+    this.showText = this.showText.bind(this)
+    this.animalSelector = this.animalSelector.bind(this)
   }
 
   componentDidMount() {
@@ -58,19 +60,31 @@ class AnimalFormInfo extends React.Component {
     }
   }
 
-  submitColorForm(e) {
+  animalSelector() {
+    let choice = []
+    this.state.animalOptions.map( animal => {
+      if($(`#${animal.animal_name}`).is(':checked') === true) {
+        choice.push(animal.animal_name)
+
+      }
+    })
+    return(
+      choice
+    )
+  }
+
+  submitAnimalForm(e) {
     e.preventDefault()
     let email = this.refs.email.value
-    let colorChoice = this.colorSelector()
-    let reason = this.refs.reason.value
+    let animalChoice = this.animalSelector()
+
     $.ajax({
-      url: '/api/color_surveys',
+      url: '/api/animal_surveys',
       type: 'POST',
       dataType: 'JSON',
-      data: { color_survey: {
+      data: { animal_survey: {
         email: email,
-        color: colorChoice,
-        reason: reason
+        favorite_animal: animalChoice,
       }}
     }).done( data => {
       this.toggleSubmitted()
@@ -106,8 +120,10 @@ class AnimalFormInfo extends React.Component {
       return this.state.animalOptions.map(function(animal, i) {
         return(
           <div key={animal.id} className='col s4' style={{marginLeft: '0px', paddingLeft: '0px'}}>
-            <input name="group1" type="radio" id={animal.id}/>
-            <label htmlFor={animal.id}>{animal.animal_name}</label>
+
+            <input type="checkbox" className="filled-in" name='group1' id={animal.animal_name} />
+            <label htmlFor={animal.animal_name}>{animal.animal_name}</label>
+
           </div>
         )
       })
@@ -115,6 +131,22 @@ class AnimalFormInfo extends React.Component {
 
     }
   }
+
+  showText() {
+    if(this.state.animalOptions.length) {
+      return(
+        <div>
+          <p>Which Animals are your favorite</p>
+          {this.showOptions()}
+        </div>
+      )
+    } else {
+
+    }
+  }
+
+  // <input name="group1" type="radio" id={animal.id}/>
+  // <label htmlFor={animal.id}>{animal.animal_name}</label>
 
   submitCheck() {
     if(this.state.submitted) {
@@ -127,7 +159,7 @@ class AnimalFormInfo extends React.Component {
     } else {
       return(
         <div className='row' style={{margin: '0 auto', width: '600px', paddingTop: '40px'}}>
-          <form onSubmit={this.submitColorForm}>
+          <form onSubmit={this.submitAnimalForm}>
             <div>
               <input type='email' ref='email' />
               <label style={{marginTop: '0px'}}>Email</label>
@@ -139,7 +171,7 @@ class AnimalFormInfo extends React.Component {
               </select>
             </div>
             <div className='col s12' style={{marginTop: '35px', padding: '0px', marginLeft: '0px'}}>
-              {this.showOptions()}
+              {this.showText()}
             </div>
             <div>
               <input type='submit' className='colorSubmit'/>
