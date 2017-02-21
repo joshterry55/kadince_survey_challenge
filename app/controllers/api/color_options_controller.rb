@@ -23,7 +23,7 @@ class Api::ColorOptionsController < ApplicationController
 
   def update
     @color_option = ColorOption.find(params[:id])
-    if @color_option.save(color_option_params)
+    if @color_option.update(color_option_params)
       render json: @color_option
     end
   end

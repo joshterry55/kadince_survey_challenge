@@ -179,7 +179,7 @@ class AnimalOptions  extends React.Component {
     } else {
       return(
         <div className="center">
-          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: 'black'}}>+ Add Animal Type</span>
+          <span onClick={this.toggleAdd} className='add-sale' style={{cursor: 'pointer', color: 'black'}}>+ Add Animal Option</span>
         </div>
       )
     }

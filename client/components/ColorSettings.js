@@ -1,4 +1,6 @@
 import React from 'react'
+import ColorColor from './ColorColor'
+import ColorOptions from './ColorOptions'
 
 class ColorSettings extends React.Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class ColorSettings extends React.Component {
   render() {
     return(
       <div>
-        ColorSettings Page
+        <ColorColor />
+        <ColorOptions />
       </div>
     )
   }
