@@ -60,20 +60,24 @@ class ColorForm extends React.Component {
     let email = this.refs.email.value
     let colorChoice = this.colorSelector()
     let reason = this.refs.reason.value
-    $.ajax({
-      url: '/api/color_surveys',
-      type: 'POST',
-      dataType: 'JSON',
-      data: { color_survey: {
-        email: email,
-        color: colorChoice,
-        reason: reason
-      }}
-    }).done( data => {
-      this.toggleSubmitted()
-    }).fail( data => {
-      debugger
-    })
+    if(colorChoice === undefined) {
+      alert('Please choose a color')
+    } else {
+      $.ajax({
+        url: '/api/color_surveys',
+        type: 'POST',
+        dataType: 'JSON',
+        data: { color_survey: {
+          email: email,
+          color: colorChoice,
+          reason: reason
+        }}
+      }).done( data => {
+        this.toggleSubmitted()
+      }).fail( data => {
+        debugger
+      })
+    }
   }
 
   colorSelector() {
@@ -106,7 +110,7 @@ class ColorForm extends React.Component {
           <p style={{marginTop: '64px'}}>Please take a moment to share a few details about yourself.</p>
           <form onSubmit={this.submitColorForm}>
             <div>
-              <input type='email' ref='email' />
+              <input type='email' ref='email' required/>
               <label style={{marginTop: '0px'}}>Email</label>
             </div>
             <div style={{marginTop: '35px', padding: '0px', marginLeft: '0px'}} className='col s12'>
@@ -115,7 +119,7 @@ class ColorForm extends React.Component {
             </div>
             <div className='col s12' style={{marginTop: '35px', padding: '0px', marginLeft: '0px'}}>
               <span style={{marginLeft: '0px', paddingLeft: '0px'}}>Tell us why you picked that color: </span>
-              <input type='text' ref='reason' />
+              <input type='text' ref='reason' required />
             </div>
             <div>
               <input type='submit' className='colorSubmit'/>

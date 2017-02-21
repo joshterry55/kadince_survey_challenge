@@ -77,20 +77,24 @@ class AnimalFormInfo extends React.Component {
     e.preventDefault()
     let email = this.refs.email.value
     let animalChoice = this.animalSelector()
+    if(animalChoice.length) {
+      $.ajax({
+        url: '/api/animal_surveys',
+        type: 'POST',
+        dataType: 'JSON',
+        data: {
+          animal_survey:
+          { email: email },
+          favorite_animal: animalChoice,
+        }
+      }).done( data => {
+        this.toggleSubmitted()
+      }).fail( data => {
+      })
+    } else {
+      alert('Please select an animal')
+    }
 
-    $.ajax({
-      url: '/api/animal_surveys',
-      type: 'POST',
-      dataType: 'JSON',
-      data: {
-        animal_survey:
-        { email: email },
-        favorite_animal: animalChoice,
-      }
-    }).done( data => {
-      this.toggleSubmitted()
-    }).fail( data => {
-    })
   }
 
   animalOptions() {
@@ -122,7 +126,7 @@ class AnimalFormInfo extends React.Component {
         return(
           <div key={animal.id} className='col s4' style={{marginLeft: '0px', paddingLeft: '0px'}}>
 
-            <input type="checkbox" className="filled-in" name='group1' id={animal.animal_name} />
+            <input type="checkbox" className="filled-in checkbox-gray" name='group1' id={animal.animal_name} />
             <label htmlFor={animal.animal_name}>{animal.animal_name}</label>
 
           </div>

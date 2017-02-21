@@ -25,3 +25,8 @@ border: 1px solid #666;
   border-radius: 0px !important;
   height: 50px !important
 }
+
+.checkbox-gray[type="checkbox"].filled-in:checked + label:after{
+     border: 1px solid #666;
+     background-color: #999;
+}
