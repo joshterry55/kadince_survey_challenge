@@ -19,7 +19,7 @@ class Api::AnimalTypesController < ApplicationController
 
   def update
     @animal_type = AnimalType.find(params[:id])
-    if @animal_type.save(animal_type_params)
+    if @animal_type.update(animal_type_params)
       render json: @animal_type
     end
   end

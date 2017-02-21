@@ -9,11 +9,11 @@ class AnimalTypes  extends React.Component {
     this.state = { add: false }
 
     this.animalTypesList = this.animalTypesList.bind(this)
-    this.changeColor = this.changeColor.bind(this)
     this.toggleEdit = this.toggleEdit.bind(this)
     this.toggleAdd = this.toggleAdd.bind(this)
     this.addDisplay = this.addDisplay.bind(this)
     this.createAnimalType = this.createAnimalType.bind(this)
+    this.editType = this.editType.bind(this)
   }
 
   componentDidMount() {
@@ -38,21 +38,21 @@ class AnimalTypes  extends React.Component {
     this.setState({add: !this.state.add})
   }
 
-  changeColor(e, id) {
-    e.preventDefault()
-    let color = this.refs.newColor.value
-    $.ajax({
-      url: `/api/animal_header_colors/${id}`,
-      type: 'PUT',
-      dataType: 'JSON',
-      data: { animal_header_color: { color: color }}
-    }).done( color => {
-      this.toggleEdit()
-      this.props.dispatch({type: 'ANIMAL_COLOR', color})
-    }).fail( data => {
-      debugger
-    })
-  }
+  // changeColor(e, id) {
+  //   e.preventDefault()
+  //   let color = this.refs.newColor.value
+  //   $.ajax({
+  //     url: `/api/animal_header_colors/${id}`,
+  //     type: 'PUT',
+  //     dataType: 'JSON',
+  //     data: { animal_header_color: { color: color }}
+  //   }).done( color => {
+  //     this.toggleEdit()
+  //     this.props.dispatch({type: 'ANIMAL_COLOR', color})
+  //   }).fail( data => {
+  //     debugger
+  //   })
+  // }
 
   animalTypesList() {
     let currentType = this.props.currenttype
@@ -62,8 +62,8 @@ class AnimalTypes  extends React.Component {
           if(currentType.id === animal.id) {
             return(
               <div key={animal.id}>
-                <form className='col s12 m4 offset-m4'>
-                  <input ref='newType' style={{marginBottom: '10px'}}  />
+                <form className='col s12 m4 offset-m4' ref='editTypeForm' onSubmit={(e) => this.editType(e, animal.id)}>
+                  <input ref='newType' defaultValue={animal.animal_type} style={{marginBottom: '10px'}}  />
                   <br />
                   <input type='submit' />
                 </form>
@@ -81,7 +81,7 @@ class AnimalTypes  extends React.Component {
         } else {
           return(
             <div key={animal.id}>
-              <span style={{fontSize: '20px'}}>{animal.animal_type}</span><i><span style={{paddingLeft: '10px', fontStyle: 'italics'}} onClick={() => this.setType(animal)} style={{cursor: 'pointer'}}> Edit</span></i>
+              <span style={{fontSize: '20px'}}>{animal.animal_type}</span><i><span onClick={() => this.setType(animal)} style={{cursor: 'pointer'}}> Edit</span><span onClick={() => this.deleteType(animal)} style={{cursor: 'pointer'}}> Delete</span></i>
             </div>
           );
         }
@@ -92,6 +92,41 @@ class AnimalTypes  extends React.Component {
   setType(animal) {
     this.props.dispatch({type: 'CURRENT_TYPE', animal})
     this.toggleEdit()
+  }
+
+  deleteType(animal) {
+    let id = animal.id
+    let confirmed = confirm("Are you sure you want to delete this Animal Type?")
+    if(confirmed) {
+      $.ajax({
+        type: "DELETE",
+        url: `/api/animal_types/${id}`,
+        dataType: 'JSON'
+      }).success( animal => {
+        this.props.dispatch({type: 'REMOVE_ANIMAL_TYPE', animal})
+      }).fail( data => {
+        console.log('failed')
+      })
+    }
+  }
+
+  editType(e, id) {
+    e.preventDefault()
+    let type = this.refs.newType.value
+    $.ajax({
+      url: `/api/animal_types/${id}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { animal_type: {
+        animal_type: type
+      }}
+    }).done( animal => {
+      this.props.dispatch({type: 'UPDATE_ANIMAL_TYPE', animal})
+      this.refs.editTypeForm.reset()
+      this.toggleEdit()
+    }).fail( data => {
+      debugger
+    })
   }
 
   createAnimalType(e) {

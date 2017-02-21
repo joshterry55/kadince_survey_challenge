@@ -18,7 +18,7 @@ class Api::AnimalOptionsController < ApplicationController
 
   def update
     @animal_option = AnimalOption.find(params[:id])
-    if @animal_option.save(animal_option_params)
+    if @animal_option.update(animal_option_params)
       render json: @animal_option
     end
   end
